@@ -15,8 +15,16 @@ module.exports = class Student extends Sequelize.Model{
                 type:Sequelize.STRING(9),
                 allowNull:true,
             },
+            major:{//전공학과
+                type:Sequelize.STRING(10),
+                allowNull:true
+            },
             token:{//파이어베이스 토큰값을 저장함
                 type:Sequelize.STRING,
+                allowNull:true
+            },
+            keyword:{//키워드 값
+                type:Sequelize.STRING(5),//단어로 하므로 크기를 5로 줬음
                 allowNull:true
             }
         },{

@@ -8,14 +8,14 @@ dotenv.config();
 
 
 //라우터 연결
-// const userRouter = require();
+const infoRouter = require('./routes/info');
 
 const {sequelize} = require('./models');//db모델 서버에 연결하기 위해서 사용함
 
 const app = express();
 app.set('port',process.env.PORT || 8001);
 
-sequelize.sync({force:true})
+sequelize.sync({force:false})
     .then(()=>{
         console.log('데이터베이스 연결 성공');
     })
@@ -55,7 +55,7 @@ app.use(session({
 
 
 //라우터 분기
-// app.use(,);
+app.use('/info',infoRouter);
 
 //404 error
 app.use((req,res,next)=>{
