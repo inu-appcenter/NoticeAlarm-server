@@ -9,6 +9,7 @@ dotenv.config();
 
 //라우터 연결
 const infoRouter = require('./routes/info');
+const pushRouter = require('./routes/push');
 
 const {sequelize} = require('./models');//db모델 서버에 연결하기 위해서 사용함
 
@@ -56,6 +57,7 @@ app.use(session({
 
 //라우터 분기
 app.use('/info',infoRouter);
+app.use('/push',pushRouter);
 
 //404 error
 app.use((req,res,next)=>{
