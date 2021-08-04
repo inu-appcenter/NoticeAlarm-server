@@ -4,6 +4,7 @@ const morgan =require('morgan');
 const path = require('path');
 const session = require('express-session');
 const dotenv = require('dotenv');
+const schedule = require('node-schedule');//특정 시간에 알림을 보내기 위한 스케줄 모듈
 dotenv.config();
 
 
@@ -58,6 +59,17 @@ app.use(session({
 //라우터 분기
 app.use('/info',infoRouter);
 app.use('/push',pushRouter);
+
+const testFunction = require('./routes/test');
+//특정 시간에 알림
+const alarm = schedule.scheduleJob('10 * * * * *',()=>{
+    console.log('매 10초에 실행');
+    testFunction();
+});
+//schedule.scheduleJob('* * * * * *',콜백함수)
+//위의 *은 앞에서부터 초,분,시간,일,달 그리고 마지막 *은 일주일중에 하루를 고르는 것
+//하루에 하나씩 보낼거면 초,분,시간만 설정하고 나머지 *로하면 매일 작동할 것
+//alarm 함수 안에 동작할 것을 넣으면 됨
 
 //404 error
 app.use((req,res,next)=>{

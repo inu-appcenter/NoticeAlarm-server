@@ -19,6 +19,10 @@ router.get('/push_send',(req,res,next)=>{
             body:'is data ok?',
         },
         token:target_token,
+        notification:{
+            title:'notification title',
+            body:'notification bady',
+        }
     }
 
     admin.messaging().send(message)
@@ -30,5 +34,25 @@ router.get('/push_send',(req,res,next)=>{
             next(error);
         })
 })
+
+//여러기기에 메세지 전송 ->sendMulticast(message)
+// admin.messaging().sendMulticast(message)
+//   .then((response) => {
+//     console.log(response.successCount + ' messages were sent successfully');
+//   });
+
+//푸쉬 알림이 실패하는 경우가 좀 있다고 함. 그 때 아래처럼 실패한 것들 받아서 다시 배열에 넣어주는 식으로
+// admin.messaging().sendMulticast(message)
+//   .then((response) => {
+//     if (response.failureCount > 0) {
+//       const failedTokens = [];
+//       response.responses.forEach((resp, idx) => {
+//         if (!resp.success) {
+//           failedTokens.push(registrationTokens[idx]);
+//         }
+//       });
+//       console.log('List of tokens that caused failures: ' + failedTokens);
+//     }
+//   });
 
 module.exports = router;
