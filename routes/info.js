@@ -12,20 +12,37 @@ router.post('/',async(req,res,next)=>{
     const length = req.body.keyword.length;
     try{
         for(var i = 0; i< length; i++){//키워드 길이만큼 로우 생성
-            const students = await Student.create({
-                number:req.body.number,
-                major:req.body.major,
-                token:req.body.token,
-                keyword:req.body.keyword[i]
+            const students = await Student.findOrCreate({
+                where:{//찾아보고
+                    major:req.body.major,
+                    token:req.body.token,
+                    keyword:req.body.keyword[i]
+                },
+                defaluts:{//없으면 defaults 값으로 생성
+                    major:req.body.major,
+                    token:req.body.token,
+                    keyword:req.body.keyword[i]
+                }
+                
             })
             console.log(students);
+
+            //키워드 테이블에서 찾고 없으면 생성함
+            const keyword = await Keyword.findOrCreate({
+                where:{//키워드가 있는지 찾아보고
+                    word:req.body.keyword[i]
+                },
+                defaults:{//없으면 defaults 값으로 그 키워드를 생성
+                    word:req.body.keyword[i]
+                }
+            })
+            console.log(keyword);
         }
-        res.json('ok');
+        res.json('Student,Keyword Ok');
     }catch(error){
         console.error(error);
         next(error);
     }
-
 })
 
 module.exports = router;
