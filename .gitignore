@@ -1,5 +1,6 @@
 key
 config
+testcrawling.js
 # Logs
 logs
 *.log

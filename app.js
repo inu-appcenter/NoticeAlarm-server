@@ -62,13 +62,17 @@ app.use('/info',infoRouter);
 app.use('/push',pushRouter);
 app.use('/data',dataRouter);
 
-// const dataFunction = require('./crawling/crawling');
+const dataFunction = require('./crawling/testcrawling');
 const testFunction = require('./routes/test');
 //특정 시간에 알림
-const alarm = schedule.scheduleJob('10 * * * * *',()=>{
+const storeAlarm = schedule.scheduleJob('10 * * * * *',()=>{
     console.log('매 10초에 실행');
-    testFunction();
-    // dataFunction();
+    // testFunction();
+    dataFunction();
+});
+
+const pushAlarm = schedule.scheduleJob('30 * * * * *',()=>{
+    console.log('매 30초에 실행');
 });
 //schedule.scheduleJob('* * * * * *',콜백함수)
 //위의 *은 앞에서부터 초,분,시간,일,달 그리고 마지막 *은 일주일중에 하루를 고르는 것
