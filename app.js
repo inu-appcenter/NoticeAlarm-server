@@ -11,13 +11,14 @@ dotenv.config();
 //라우터 연결
 const infoRouter = require('./routes/info');
 const pushRouter = require('./routes/push');
+const dataRouter = require('./routes/data');
 
 const {sequelize} = require('./models');//db모델 서버에 연결하기 위해서 사용함
 
 const app = express();
 app.set('port',process.env.PORT || 8001);
 
-sequelize.sync({force:false})
+sequelize.sync({force:true})
     .then(()=>{
         console.log('데이터베이스 연결 성공');
     })
@@ -59,12 +60,15 @@ app.use(session({
 //라우터 분기
 app.use('/info',infoRouter);
 app.use('/push',pushRouter);
+app.use('/data',dataRouter);
 
+// const dataFunction = require('./crawling/crawling');
 const testFunction = require('./routes/test');
 //특정 시간에 알림
 const alarm = schedule.scheduleJob('10 * * * * *',()=>{
     console.log('매 10초에 실행');
     testFunction();
+    // dataFunction();
 });
 //schedule.scheduleJob('* * * * * *',콜백함수)
 //위의 *은 앞에서부터 초,분,시간,일,달 그리고 마지막 *은 일주일중에 하루를 고르는 것

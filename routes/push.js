@@ -21,7 +21,7 @@ router.get('/push_send',(req,res,next)=>{
         token:target_token,
         notification:{
             title:'notification title',
-            body:'notification bady',
+            body:'notification body',
         }
     }
 
