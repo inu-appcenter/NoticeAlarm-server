@@ -83,6 +83,7 @@ const majorList = [
     //     major: "소비자학과",
     //     link: "https://ccs.inu.ac.kr/user/indexSub.do?framePath=unknownboard&siteId=ccs&dum=dum&boardId=46583&page=1&command=list",
     // },
+
     // 로그인 필요
     // { major: "기계공학과", link: "https://www.inu.ac.kr/user/boardList.do?boardId=49913&NewIpsi=Y" },
     {
