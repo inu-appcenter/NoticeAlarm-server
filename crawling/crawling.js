@@ -10,23 +10,33 @@ const { majorList } = require("./majorLinkList");
     for await (let { major, link } of majorList) {
         await page.goto(link);
 
-        let majorCrawlingList = await page.$$eval("tbody > tr", (firms) =>
+        //null 값이 포함된 완벽하지않은 크롤링 리스트
+        let unperfectedMajorCrawlingList = await page.$$eval("tbody > tr", (firms) =>
             firms.map((firm) => {
                 let a = firm.querySelector("td > a");
                 let b = firm.querySelector("td:nth-child(4)").innerText;
                 if (!b.includes("-")) b = firm.querySelector("td:nth-child(3)").innerText;
-                return {
-                    link: a.href,
-                    title: a.innerText,
-                    writeTime: b,
-                };
+                let c = firm.querySelector("td.no");
+                if (c.children.length == 0) {
+                    return {
+                        link: a.href,
+                        title: a.innerText,
+                        writeTime: b,
+                    };
+                }
             })
         );
 
-        // 크롤링한 객체에 해당 학과 키 밸류 추가
-        for (let list of majorCrawlingList) {
-            list.major = major;
+        let majorCrawlingList = [];
+
+        //위의 리스트에서 null값을 제거하고 major를 추가 후, 공지사항 글 10개까지만 포함시키기.
+        for (let list of unperfectedMajorCrawlingList) {
+            if (list != null) {
+                list.major = major;
+                majorCrawlingList.push(list);
+
+                if (majorCrawlingList.length == 10) break;
+            }
         }
-        console.log(majorCrawlingList);
     }
 })();

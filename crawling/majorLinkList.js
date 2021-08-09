@@ -1,7 +1,11 @@
 const majorList = [
     {
+        major: "인천대학교",
+        link: "https://www.inu.ac.kr/user/boardList.do?boardId=48510&page=1&search=&column=&categoryId=&categoryDepth=&id=inu_070201000000&parent=",
+    },
+    {
         major: "국어국문학과",
-        link: "https://korean.inu.ac.kr/user/indexSub.do?codyMenuSeq=82414&siteId=korean&dum=dum&boardId=42308&page=1&command=list&boardSeq=",
+        link: "https://german.inu.ac.kr/user/indexSub.do?codyMenuSeq=66674&siteId=german&dum=dum&boardId=44272&page=1&command=list&boardSeq=",
     },
     {
         major: "독어독문학과",
@@ -117,7 +121,6 @@ const majorList = [
     {
         major: "정보통신공학과",
         link: "https://www.inu.ac.kr/user/indexSub.do?codyMenuSeq=41719&siteId=ite&dum=dum&boardId=45113&page=1&command=list&boardSeq=",
-        //link: "https://www.inu.ac.kr/user/indexSub.do?codyMenuSeq=993092&siteId=ite&dum=dum&boardId=415835&page=1&command=list&boardSeq=",
     },
     {
         major: "임베디드시스템공학과",
@@ -125,15 +128,13 @@ const majorList = [
     },
     { major: "경영학부", link: "https://www.inu.ac.kr/user/indexSub.do?codyMenuSeq=138022&siteId=management" },
     { major: "세무회계학과", link: "https://www.inu.ac.kr/user/indexSub.do?codyMenuSeq=138238&siteId=tax" },
+    //공지사항 10개 이하
+    //학부로 통합함
     {
-        major: "한국화전공",
+        major: "조형예술학부",
         link: "https://finearts.inu.ac.kr/user/indexSub.do?codyMenuSeq=91965&siteId=finearts&dum=dum&boardId=43019&page=1&command=list&boardSeq=",
     },
-    //조형예술학부
-    {
-        major: "서양화전공",
-        link: "https://finearts.inu.ac.kr/user/indexSub.do?codyMenuSeq=91965&siteId=finearts&dum=dum&boardId=43019&page=1&command=list&boardSeq=",
-    },
+
     //학과 공지 로그인 필요
     // {
     //     major: "디자인학부",
@@ -141,10 +142,14 @@ const majorList = [
     // },
     //공지사항이 없음...
     // { major: "공연예술학과", link: "https://uipa10.inu.ac.kr/user/indexMain.do?siteId=uipa10" },
+
+    //공지사항 10개 이하
     {
         major: "체육학부",
         link: "https://inupe.inu.ac.kr/user/indexSub.do?codyMenuSeq=95417&siteId=inupe&dum=dum&boardId=44037&page=1&command=list&boardSeq=",
     },
+    //공지사항 10개 이하
+
     { major: "운동건강학부", link: "https://hlkn.inu.ac.kr/user/indexSub.do?codyMenuSeq=103387&siteId=uiex" },
     {
         major: "국어교육과",
