@@ -24,7 +24,7 @@ module.exports = class Data extends Sequelize.Model{
                 type:Sequelize.STRING(10),
                 allowNull:true
             },
-            check:{//새로운 데이터인지 확인 유무
+            checking:{//새로운 데이터인지 확인 유무
                 type:Sequelize.STRING(3),
                 allowNull:true,
             }
