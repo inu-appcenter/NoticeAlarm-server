@@ -2,9 +2,13 @@ const {sequelize} = require('../models');
 const Student = require('../models/student')
 //푸쉬관련 작업을 하는 함수 pushFunction
 const pushFunction = require('./push');
+
 //새로운 데이터를 푸쉬작업 후에 새로운 데이터가 아님을 알려주기위해
 //checking 컬럼을 old로 업데이트 해주는 함수 updateCheck
 const updateCheck = require('./check');
+
+//새로운 데이터가 들어왔을 때 기존의 오래된 데이터를 삭제하는 함수
+const deleteData =require('./delete');
 
 
 //키워드로 먼저 선별작업을 해주는 함수
@@ -38,39 +42,30 @@ const matching = async(next)=>{
                     }
                 })
 
-                //푸쉬알람을 위한 토큰 값을 저장할 pushToken
-                // const pushToken = [];
                 //해당 제목에 키워드 설정한 학생이 있다면
                 if(students){
                     //학생들의 수만큼 반복
-                    for(var j = 0; j < students.length; j++){
-                        //토큰 값을 저장함
-                        // pushToken.push(students[j].token);
-                        // console.log(students[j]);
-                        
+                    for(var j = 0; j < students.length; j++){                        
                         //위에서 원하는 데이터만 선별작업을 완료하고 이제 푸쉬 알람을 보내는 것
                         //학생 정보(토큰,키워드)와 새로푸쉬해야하는 정보의 링크, 제목을 같이 담아서 보냄
                         //하나하나 전부 푸쉬 알람을 보내는 것
-                        await pushFunction(students[j],result[i].link,result[i].title);
+                        // await pushFunction(students[j],result[i].link,result[i].title);
                     }
-                    // // console.log(pushToken);
-                    // if(pushToken.length>0){
-                    //     console.log('go push');
-                    // }
                 }
 
                 //푸쉬를 보낸 데이터의 checking을 'old'로 바꿔야 함
                 //아래 함수는 old로 업데이트를 해주는 함수임
                 //id 값을 같이 보냄으로써 해당 데이터를 수정
-                //updateCheck(result[i].id);
+                // console.log('********************************');
+                // console.log(result[i].id);
+                await updateCheck(result[i].id,result[i].major);
 
-                //업데이트 이후에 row가 하나 늘었으니 해당 학과의 오래된 데이터 하나를 지움
-                //아래 함수는 오래된 정보를 지우는 함수임
-                //해당 학과정보를 바탕으로 가장 아래에 있는 데이터를 지우는 것
-                //delete from datas where major ='국어국문학과' order by id desc limit 1;
-                //해당 쿼리로 가장 아래에 있는 데이터를 지움
-                //아래에 있는 데이터를 지우는 이유는 크롤링한 데이터를 위에서부터 읽어왔고
-                //아래에 있는 것이 다음 페이지로 가장 먼저 넘어가는 데이터임
+                //수정
+                //delete from datas where major ='국어국문학과' order by id asc limit 1;
+                //아이디가 작은 것 부터 삭제 -> 크롤링 끝 값 부터 집어넣을 예정
+                //먼저 들어온 것이 아이디 값이 작으니 오름차순으로 정렬하여 limit 1로 제일 위에 값만 제거하는 것
+                // await deleteData(result[i].major);
+                //updateCheck에서 동작 요청하여 동작하도록 수정
             }
         }
         
