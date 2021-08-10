@@ -18,7 +18,7 @@ const {sequelize} = require('./models');//db모델 서버에 연결하기 위해
 const app = express();
 app.set('port',process.env.PORT || 8001);
 
-sequelize.sync({force:true})
+sequelize.sync({force:false})
     .then(()=>{
         console.log('데이터베이스 연결 성공');
     })
@@ -59,16 +59,22 @@ app.use(session({
 
 //라우터 분기
 app.use('/info',infoRouter);
-app.use('/push',pushRouter);
+// app.use('/push',pushRouter);
 app.use('/data',dataRouter);
 
-// const dataFunction = require('./crawling/crawling');
+const dataFunction = require('./crawling/testcrawling');
 const testFunction = require('./routes/test');
 //특정 시간에 알림
-const alarm = schedule.scheduleJob('10 * * * * *',()=>{
+const storeAlarm = schedule.scheduleJob('10 * * * * *',()=>{
     console.log('매 10초에 실행');
-    testFunction();
-    // dataFunction();
+    // testFunction();
+    dataFunction();
+});
+
+const matchFunction = require('./push/compare');
+const pushAlarm = schedule.scheduleJob('30 * * * * *',()=>{
+    console.log('매 30초에 실행');
+    // matchFunction();
 });
 //schedule.scheduleJob('* * * * * *',콜백함수)
 //위의 *은 앞에서부터 초,분,시간,일,달 그리고 마지막 *은 일주일중에 하루를 고르는 것

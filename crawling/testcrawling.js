@@ -1,6 +1,7 @@
 const puppeteer = require("puppeteer");
 const { majorList } = require("./majorLinkList");
 const axios = require('axios')
+const dataFunction = require('../insert/data');
 //학과 공지사항 크롤링 함수
 async function majorCrawling() {
     const browser = await puppeteer.launch();
@@ -28,9 +29,14 @@ async function majorCrawling() {
             list.major = major;
         }
         // console.log(majorCrawlingList);
-        const data = majorCrawlingList
+        // const data = majorCrawlingList
+        // try{
+        //     await axios.post('http://localhost:8001/data',majorCrawlingList)
+        // }catch(error){
+        //     console.error(error);
+        // }
         try{
-            await axios.post('http://localhost:8001/data',majorCrawlingList)
+            dataFunction(majorCrawlingList);
         }catch(error){
             console.error(error);
         }

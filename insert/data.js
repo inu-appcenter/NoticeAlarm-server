@@ -1,16 +1,15 @@
-const express = require('express');
+const Data = require('../models/data');
 
-const {Data} = require('../models');
-
-const router = express.Router();
-
-//크롤링 데이터 설정
-router.post('/',async(req,res,next)=>{
-    const crawling = req.body;
+//처음에 함수로 했는데 잘 안돼서 우선 axios로 라우터로 요청 보냈었음
+//그러다 우선 해결할 것들 해결하고나서 다시 함수화 시켜서 테스트 하니
+//잘 동작하는 것 같아 이걸로 사용 예정임
+const dataFunction = async(crawling)=>{
+    // const crawling = req.body;
     console.log('--------------------------------------------------');
     // console.log(crawling);
     if(crawling){//크롤링 데이터 있는지 체크
-        console.log(crawling.length)
+        console.log(crawling.length);
+        console.log(crawling);
         for(let list of crawling){
             try{
                 //크롤링한 데이터 저장
@@ -29,14 +28,12 @@ router.post('/',async(req,res,next)=>{
                     }
                     
                 })
+                
             }catch(error){
                 console.error(error);
                 next(error);
             }
         }
     }
-    res.json('ok');
-
-})
-
-module.exports = router;
+}
+module.exports = dataFunction;
