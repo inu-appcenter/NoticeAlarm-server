@@ -9,7 +9,9 @@ const dataFunction = async(crawling)=>{
     // console.log(crawling);
     if(crawling){//크롤링 데이터 있는지 체크
         console.log(crawling.length);
-        console.log(crawling);
+        // console.log(crawling);
+        // console.log(crawling[0].link);
+        // console.log(crawling[0].title);
         for(let list of crawling){
             try{
                 //크롤링한 데이터 저장
