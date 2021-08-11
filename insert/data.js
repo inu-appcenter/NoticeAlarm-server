@@ -12,20 +12,20 @@ const dataFunction = async(crawling)=>{
         // console.log(crawling);
         // console.log(crawling[0].link);
         // console.log(crawling[0].title);
-        for(let list of crawling){
+        for(var i = crawling.length -1; i >= 0; i --){
             try{
                 //크롤링한 데이터 저장
                 //항상 새로운 데이터만 저장할 수 있게 findOrCreate사용
                 const data = await Data.findOrCreate({
                     where:{
-                        link:list.link,
-                        title:list.title,
-                        major:list.major,
+                        link:crawling[i].link,
+                        title:crawling[i].title,
+                        major:crawling[i].major,
                     },
                     defaults:{
-                        link:list.link,
-                        title:list.title,
-                        major:list.major,
+                        link:crawling[i].link,
+                        title:crawling[i].title,
+                        major:crawling[i].major,
                         checking:'new'
                     }
                     
