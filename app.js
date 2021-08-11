@@ -12,6 +12,7 @@ dotenv.config();
 const infoRouter = require('./routes/info');
 const dataRouter = require('./routes/data');
 const deleteRouter = require('./routes/delete');
+const updateRouter = require('./routes/update');
 
 const {sequelize} = require('./models');//db모델 서버에 연결하기 위해서 사용함
 
@@ -61,6 +62,7 @@ app.use(session({
 app.use('/info',infoRouter);
 app.use('/data',dataRouter);
 app.use('/delete',deleteRouter);
+app.use('/update',updateRouter);
 
 const dataFunction = require('./crawling/crawling');
 //특정 시간에 알림
