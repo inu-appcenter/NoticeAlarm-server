@@ -11,6 +11,7 @@ dotenv.config();
 //라우터 연결
 const infoRouter = require('./routes/info');
 const dataRouter = require('./routes/data');
+const deleteRouter = require('./routes/delete');
 
 const {sequelize} = require('./models');//db모델 서버에 연결하기 위해서 사용함
 
@@ -58,8 +59,8 @@ app.use(session({
 
 //라우터 분기
 app.use('/info',infoRouter);
-// app.use('/push',pushRouter);
 app.use('/data',dataRouter);
+app.use('/delete',deleteRouter);
 
 const dataFunction = require('./crawling/crawling');
 //특정 시간에 알림
@@ -70,7 +71,7 @@ const storeAlarm = schedule.scheduleJob('00 21 * * * *',()=>{
 const matchFunction = require('./push/compare');
 const pushAlarm = schedule.scheduleJob('30 * * * * *',()=>{
     console.log('매 30초에 실행');
-    matchFunction();
+    // matchFunction();
 });
 //schedule.scheduleJob('* * * * * *',콜백함수)
 //위의 *은 앞에서부터 초,분,시간,일,달 그리고 마지막 *은 일주일중에 하루를 고르는 것
