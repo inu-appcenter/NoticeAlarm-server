@@ -64,10 +64,10 @@ app.use('/data',dataRouter);
 const dataFunction = require('./crawling/testcrawling');
 const testFunction = require('./routes/test');
 //특정 시간에 알림
-const storeAlarm = schedule.scheduleJob('10 * * * * *',()=>{
+const storeAlarm = schedule.scheduleJob('00 21 * * * *',()=>{
     console.log('매 10초에 실행');
     // testFunction();
-    // dataFunction();
+    dataFunction();
 });
 
 const matchFunction = require('./push/compare');

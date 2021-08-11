@@ -55,17 +55,8 @@ const matching = async(next)=>{
 
                 //푸쉬를 보낸 데이터의 checking을 'old'로 바꿔야 함
                 //아래 함수는 old로 업데이트를 해주는 함수임
-                //id 값을 같이 보냄으로써 해당 데이터를 수정
-                // console.log('********************************');
-                // console.log(result[i].id);
-                await updateCheck(result[i].id,result[i].major);
+                await updateCheck();
 
-                //수정
-                //delete from datas where major ='국어국문학과' order by id asc limit 1;
-                //아이디가 작은 것 부터 삭제 -> 크롤링 끝 값 부터 집어넣을 예정
-                //먼저 들어온 것이 아이디 값이 작으니 오름차순으로 정렬하여 limit 1로 제일 위에 값만 제거하는 것
-                // await deleteData(result[i].major);
-                //updateCheck에서 동작 요청하여 동작하도록 수정
             }
         }
         
