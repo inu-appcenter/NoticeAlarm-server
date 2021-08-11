@@ -1,8 +1,9 @@
 const puppeteer = require("puppeteer");
 const { majorList } = require("./majorLinkList");
-
+const dataFunction = require('../insert/data');
 //학과 공지사항 크롤링 함수
-(async function majorCrawling() {
+//학과 공지사항 크롤링 함수
+async function majorCrawling() {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
@@ -38,5 +39,11 @@ const { majorList } = require("./majorLinkList");
                 if (majorCrawlingList.length == 10) break;
             }
         }
+        try{
+            dataFunction(majorCrawlingList);
+        }catch(error){
+            console.error(error);
+        }
     }
-})();
+}
+module.exports = majorCrawling;
