@@ -38,7 +38,7 @@ router.post('/',async(req,res,next)=>{
             })
             console.log(keyword);
         }
-        res.json('Student,Keyword Ok');
+        res.status(200).json('Student,Keyword Ok');
     }catch(error){
         console.error(error);
         next(error);

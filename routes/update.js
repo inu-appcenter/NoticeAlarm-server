@@ -16,7 +16,7 @@ router.patch('/',async(req,res,next)=>{
         })
         console.log(result);
         if(result >= 1){
-            res.json('Major Update Ok');
+            res.status(200).json('Major Update Ok');
         }else{
             res.json('토큰에 해당하는 학생이 없습니다');
         }
