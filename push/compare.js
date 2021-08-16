@@ -49,7 +49,7 @@ const matching = async(next)=>{
                         //위에서 원하는 데이터만 선별작업을 완료하고 이제 푸쉬 알람을 보내는 것
                         //학생 정보(토큰,키워드)와 새로푸쉬해야하는 정보의 링크, 제목을 같이 담아서 보냄
                         //하나하나 전부 푸쉬 알람을 보내는 것
-                        // await pushFunction(students[j],result[i].link,result[i].title);
+                        await pushFunction(students[j],result[i].link,result[i].title);
                     }
                 }
 
