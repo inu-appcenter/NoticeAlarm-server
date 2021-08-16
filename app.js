@@ -66,14 +66,14 @@ app.use('/update',updateRouter);
 
 const dataFunction = require('./crawling/crawling');
 //특정 시간에 알림
-const storeAlarm = schedule.scheduleJob('00 21 * * * *',()=>{
+const storeAlarm = schedule.scheduleJob('00 35 * * * *',()=>{
     dataFunction();
 });
 
 const matchFunction = require('./push/compare');
-const pushAlarm = schedule.scheduleJob('30 * * * * *',()=>{
+const pushAlarm = schedule.scheduleJob('00 35 * * * *',()=>{
     console.log('매 30초에 실행');
-    // matchFunction();
+    matchFunction();
 });
 //schedule.scheduleJob('* * * * * *',콜백함수)
 //위의 *은 앞에서부터 초,분,시간,일,달 그리고 마지막 *은 일주일중에 하루를 고르는 것
