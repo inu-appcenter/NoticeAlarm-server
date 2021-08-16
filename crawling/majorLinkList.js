@@ -117,7 +117,7 @@ const majorList = [
     //     major: "에너지화학공학과",
     //     link: "https://echeme.inu.ac.kr/user/indexSub.do?framePath=unknownboard&siteId=energy&dum=dum&boardId=336573&page=1&command=list",
     // },
-    { major: "컴퓨터공학과", link: "https://www.inu.ac.kr/user/indexSub.do?codyMenuSeq=99317&siteId=isis" },
+    { major: "컴퓨터공학부", link: "https://www.inu.ac.kr/user/indexSub.do?codyMenuSeq=99317&siteId=isis" },
     {
         major: "정보통신공학과",
         link: "https://www.inu.ac.kr/user/indexSub.do?codyMenuSeq=41719&siteId=ite&dum=dum&boardId=45113&page=1&command=list&boardSeq=",
