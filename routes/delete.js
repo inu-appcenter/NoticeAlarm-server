@@ -15,7 +15,7 @@ router.delete('/',async(req,res,next)=>{
         })
         console.log(result);
         if(result == 1){
-            res.status(200).json('Keyword delete Ok');
+            res.status(200).json('200');
         }else{
             res.json('해당 키워드가 없습니다');
         }
