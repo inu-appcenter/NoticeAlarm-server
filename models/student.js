@@ -9,12 +9,6 @@ module.exports = class Student extends Sequelize.Model{
     static init(sequelize){
         return super.init({
             //아이디는 자동으로 설정
-            // number:{//학번
-            //     //학번은 파이어베이스 토큰이 만료됐을 때 업데이트 용도로 필요할듯 하다
-            //     //프론트측에서 만료된 토큰과 갱신된 토큰을 같이 보내주면 이 칼럼은 필요없을 듯
-            //     type:Sequelize.STRING(9),
-            //     allowNull:true,
-            // },
             major:{//전공학과
                 type:Sequelize.STRING(10),
                 allowNull:true

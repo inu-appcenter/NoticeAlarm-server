@@ -13,13 +13,14 @@ const infoRouter = require('./routes/info');
 const dataRouter = require('./routes/data');
 const deleteRouter = require('./routes/delete');
 const updateRouter = require('./routes/update');
+const studentRouter = require('./routes/student');
 
 const {sequelize} = require('./models');//db모델 서버에 연결하기 위해서 사용함
 
 const app = express();
 app.set('port',process.env.PORT || 8001);
 
-sequelize.sync({force:false})
+sequelize.sync({force:true})
     .then(()=>{
         console.log('데이터베이스 연결 성공');
     })
@@ -63,6 +64,7 @@ app.use('/info',infoRouter);
 app.use('/data',dataRouter);
 app.use('/delete',deleteRouter);
 app.use('/update',updateRouter);
+app.use('/student',studentRouter);
 
 const dataFunction = require('./crawling/crawling');
 //특정 시간에 알림
