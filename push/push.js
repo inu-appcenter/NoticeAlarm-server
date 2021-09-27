@@ -18,26 +18,46 @@ const pushFunction = async(pushData,link,title,next)=>{
     console.log(pushData.token);
     console.log(pushData.keyword);
 
-    const message = {
-        data:{//여기에 데이터를 담아야 클라측에서 볼 수 있음
-            title:title,
-            body:link,
-            keyword:pushData.keyword
+    const options = {
+        uri:'https://fcm.googleapis.com/fcm/send', 
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "key=AAAAf984HVU:APA91bFHGL8D-Z7ttM2Yb7Tpt42nV_3t6Woo5Ehm9LIEP5qUMXxMqDlRwrt21VFZJwJlDnSaLvjJb2MoNWAb0Q8aUpJZzZnmkrQ60S1z0d1Vixb72XWOYpRFdd_EHnmNsPLvFueAKTbS"
         },
-        token:target_token,
-        notification:{//푸쉬알람이 보이는 형태 재난문자처럼
-            title:title,
-            body:link
+        json: {
+            'to': target_token,
+            "priority" : "high",
+            "data" : {
+                "title" : "#키워드",
+                "body" : "#키워드 알람이 도착했습니다.",
+                "link" : link,
+                "name" : title,
+                "keyword" : pushData.keyword,
+            }
         }
-    }
+      }
+    request.post(options)
+    // const message = {
+    //     data:{//여기에 데이터를 담아야 클라측에서 볼 수 있음
+    //         title:title,
+    //         body:link,
+    //         keyword:pushData.keyword
+    //     },
+    //     token:target_token,
+    //     notification:{//푸쉬알람이 보이는 형태 재난문자처럼
+    //         title:'#키워드',
+    //         body:'#키워드 알림이 왔습니다'
+    //     }
+    // }
 
-    admin.messaging().send(message)
-        .then((response)=>{
-            console.log('send message successfully:',response)
-        })
-        .catch((error)=>{
-            console.log('Error sending message:',error)
-        })
+    // admin.messaging().send(message)
+    //     .then((response)=>{
+    //         console.log('send message successfully:',response)
+    //     })
+    //     .catch((error)=>{
+    //         console.log('Error sending message:',error)
+    //     })
 }
   
   

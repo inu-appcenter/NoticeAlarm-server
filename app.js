@@ -68,20 +68,20 @@ app.use('/student',studentRouter);
 
 const dataFunction = require('./crawling/crawling');
 //특정 시간에 알림
-const storeAlarm1 = schedule.scheduleJob('00 30 09 * * *',()=>{
+const storeAlarm1 = schedule.scheduleJob('00 30 00 * * *',()=>{
     dataFunction();
 });
 
 const matchFunction = require('./push/compare');
-const pushAlarm1 = schedule.scheduleJob('00 00 10 * * *',()=>{
+const pushAlarm1 = schedule.scheduleJob('00 00 01 * * *',()=>{
     matchFunction();
 });
 
-const storeAlarm1 = schedule.scheduleJob('00 30 18 * * *',()=>{
+const storeAlarm2 = schedule.scheduleJob('00 30 09 * * *',()=>{
     dataFunction();
 });
 
-const pushAlarm1 = schedule.scheduleJob('00 00 19 * * *',()=>{
+const pushAlarm2 = schedule.scheduleJob('00 00 10 * * *',()=>{
     matchFunction();
 });
 //schedule.scheduleJob('* * * * * *',콜백함수)
