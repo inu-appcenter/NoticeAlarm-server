@@ -15,6 +15,11 @@ router.patch('/',async(req,res,next)=>{
             }
         })
         console.log(result);
+        const deleteResult = await Student.destroy({
+            where:{
+                token: req.body.token,
+            }
+        })
         if(result >= 1){
             res.status(200).json('200');
         }else{

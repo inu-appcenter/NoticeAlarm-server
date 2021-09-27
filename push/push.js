@@ -1,5 +1,5 @@
 const admin = require("firebase-admin");
-
+const request = require("request");
 //파이어베이스 프로젝트에서 만든 키값이 있음
 var serviceAccount = require("../key/noticealarm-2271d-firebase-adminsdk-j9f5e-bddea59dd0.json");
 
