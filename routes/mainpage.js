@@ -19,7 +19,7 @@ router.post('/',async(req,res,next)=>{
         for(keyword of keywords){
             //각 키워드별로 해당학과의 공지사항 하나를 추출함
             const [notice,metadata] = await sequelize.query(
-                `select datas.* from datas 
+                `select datas.link, datas.title from datas 
                 where major = '${req.body.major}' and datas.title like concat('%','${keyword.keyword}','%')
                 order by id asc limit 1;`
             )
