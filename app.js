@@ -15,6 +15,7 @@ const deleteRouter = require('./routes/delete');
 const updateRouter = require('./routes/update');
 const studentRouter = require('./routes/student');
 const mainpageRouter = require('./routes/mainpage');
+const listRouter = require('./routes/list');
 
 const {sequelize} = require('./models');//db모델 서버에 연결하기 위해서 사용함
 
@@ -67,6 +68,7 @@ app.use('/delete',deleteRouter);
 app.use('/update',updateRouter);
 app.use('/student',studentRouter);
 app.use('/mainpage',mainpageRouter);
+app.use('/list',listRouter);
 
 const dataFunction = require('./crawling/crawling');
 //특정 시간에 알림
