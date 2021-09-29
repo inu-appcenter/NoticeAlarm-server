@@ -22,8 +22,14 @@ router.post('/',async(req,res,next)=>{
                 keyword:req.body.keyword
             }
             
-        })
-        console.log(students);
+        });
+        
+        const result = await Student.destroy({
+            where:{
+                keyword:null
+            }
+        });
+        console.log(result);
 
         //키워드 테이블에서 찾고 없으면 생성함
         const keyword = await Keyword.findOrCreate({
