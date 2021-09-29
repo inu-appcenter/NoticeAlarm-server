@@ -8,7 +8,7 @@ const router = express.Router();
 router.post('/',async(req,res,next)=>{
     try{
         const [result,metadata] = await sequelize.query(
-            `select datas.* from datas 
+            `select datas.link, datas.title from datas 
             where major = '${req.body.major}' and datas.title like concat('%','${req.body.keyword}','%');`
         )
         res.status('200').json(result);
