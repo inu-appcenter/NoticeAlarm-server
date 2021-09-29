@@ -20,7 +20,7 @@ const {sequelize} = require('./models');//db모델 서버에 연결하기 위해
 const app = express();
 app.set('port',process.env.PORT || 8001);
 
-sequelize.sync({force:true})
+sequelize.sync({force:false})
     .then(()=>{
         console.log('데이터베이스 연결 성공');
     })

@@ -34,7 +34,11 @@ const pushFunction = async(pushData,link,title,next)=>{
                 "link" : link,
                 "name" : title,
                 "keyword" : pushData.keyword,
-            }
+            },
+            notification:{//푸쉬알람이 보이는 형태 재난문자처럼
+                        title:'#키워드',
+                        body:'#키워드 알림이 왔습니다'
+                    }
         }
       }
     request.post(options)
