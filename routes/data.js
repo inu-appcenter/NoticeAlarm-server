@@ -25,6 +25,7 @@ router.post('/',async(req,res,next)=>{
                         link:list.link,
                         title:list.title,
                         major:list.major,
+                        time:list.writeTime,
                         checking:'new'
                     }
                     
