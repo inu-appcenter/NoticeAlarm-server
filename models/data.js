@@ -15,11 +15,11 @@ module.exports = class Data extends Sequelize.Model{
                 type:Sequelize.STRING,
                 allowNull:true
             },
-            // wirteTime:{//해당 공지사항 등록 시간
-            //     type:Sequelize.DATE,
-            //     allowNull:true,
-            //     defaultValue: Sequelize.NOW
-            // },
+            time:{//해당 공지사항 등록 시간
+                type:Sequelize.DATE,
+                allowNull:true,
+                defaultValue: Sequelize.NOW
+            },
             major:{//전공학과
                 type:Sequelize.STRING(10),
                 allowNull:true

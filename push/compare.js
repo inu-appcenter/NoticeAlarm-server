@@ -21,14 +21,6 @@ const matching = async(next)=>{
             from keywords,datas 
             where checking = 'new' and datas.title like concat('%',keywords.word,'%');`
         )
-        // if(result){
-        //     console.log(result[0]);
-        // }
-        // console.log(result);
-        // console.log(result.length);
-
-        
-        // console.log(result.length);
 
         //비교해서 온 데이터들(푸쉬 알람 보낼 수 있는 데이터들)이 있으면
         if(result){
