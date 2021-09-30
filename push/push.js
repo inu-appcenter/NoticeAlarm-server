@@ -29,8 +29,8 @@ const pushFunction = async(pushData,link,title,next)=>{
             'to': target_token,
             "priority" : "high",
             "data" : {
-                "title" : "#키워드",
-                "body" : "#키워드 알람이 도착했습니다.",
+                "title" : `#${pushData.keyword}`,
+                "body" : `#${pushData.keyword} 알람이 도착했습니다.`,
                 "link" : link,
                 "name" : title,
                 "keyword" : pushData.keyword,
