@@ -26,6 +26,7 @@ const dataFunction = async(crawling)=>{
                         link:crawling[i].link,
                         title:crawling[i].title,
                         major:crawling[i].major,
+                        time:crawling[i].writeTime,
                         checking:'new'
                     }
                     
