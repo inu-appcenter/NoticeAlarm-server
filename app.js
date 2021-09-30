@@ -10,7 +10,6 @@ dotenv.config();
 
 //라우터 연결
 const infoRouter = require('./routes/info');
-const dataRouter = require('./routes/data');
 const deleteRouter = require('./routes/delete');
 const updateRouter = require('./routes/update');
 const studentRouter = require('./routes/student');
@@ -64,7 +63,6 @@ app.use(session({
 
 //라우터 분기
 app.use('/info',infoRouter);
-app.use('/data',dataRouter);
 app.use('/delete',deleteRouter);
 app.use('/update',updateRouter);
 app.use('/student',studentRouter);
