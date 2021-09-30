@@ -23,6 +23,8 @@ router.post('/',async(req,res,next)=>{
                 where major = '${req.body.major}' and datas.title like concat('%','${keyword.keyword}','%')
                 order by id asc limit 1;`
             )
+            
+            notice[0].keyword = keyword.keyword; //응답에 키워드 값 추가
             datas.push(notice[0]);//대괄호 없애려고 가장 첫 값에 접근해서 푸쉬
         }
         res.status('200').json(datas);
