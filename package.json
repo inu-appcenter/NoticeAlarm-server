@@ -1,6 +1,6 @@
 {
     "name": "Notice-PushAlarm",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "앱센터 13기 학과 공지 푸쉬 알람 서비스",
     "main": "app.js",
     "scripts": {
