@@ -105,3 +105,7 @@ dist
 
 # TernJS port file
 .tern-port
+/.idea/.gitignore
+/.idea/modules.xml
+/.idea/NoticeAlarm-server.iml
+/.idea/vcs.xml
