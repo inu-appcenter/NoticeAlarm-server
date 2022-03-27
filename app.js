@@ -26,7 +26,7 @@ sequelize.sync({force:false})
     .then(()=>{
         console.log('데이터베이스 연결 성공');
     })
-    .catch(()=>{
+    .catch((err)=>{
         console.error(err);
     });
 //index.js에서 db를 불러와서 sync메서드를 사용해 서버 실행 시 MYSQL과 연동되는 것
