@@ -5,6 +5,8 @@ const path = require('path');
 const session = require('express-session');
 const dotenv = require('dotenv');
 const schedule = require('node-schedule');//특정 시간에 알림을 보내기 위한 스케줄 모듈
+const nunjucks = require('nunjucks')
+
 dotenv.config();
 
 
@@ -20,7 +22,14 @@ const popularRouter = require('./routes/popular');
 const {sequelize} = require('./models');//db모델 서버에 연결하기 위해서 사용함
 
 const app = express();
-app.set('port',process.env.PORT || 8001);
+app.set('port', process.env.PORT || 8001);
+
+//set view
+app.set('view engine','html');
+nunjucks.configure('views',{
+    express:app,
+    watch:true,
+});
 
 sequelize.sync({force:false})
     .then(()=>{
@@ -98,13 +107,16 @@ app.use((req,res,next)=>{
     const error = new Error(`${req.method} ${req.url}라우터가 없습니다.`);
     error.status = 404;
     next(error);
+
 });
 
 //500 error
-app.use((err,req,res,next)=>{
+app.use((err, req, res, next) => {
+    console.log(err.status)
     res.locals.message = err.message;
     res.locals.error = process.env.NODE_ENV !== 'production'? err:{};
     res.status(err.status || 500);
+    res.render('error');
 });
 
 app.listen(app.get('port'),()=>{
