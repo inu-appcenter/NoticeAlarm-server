@@ -109,3 +109,5 @@ dist
 /.idea/modules.xml
 /.idea/NoticeAlarm-server.iml
 /.idea/vcs.xml
+
+.DS_Store
