@@ -2,24 +2,24 @@ require('dotenv').config();
 
 module.exports={
   "development": {
-    "username": "root",
+    "username": process.env.SEQUELIZE_USERNAME,
     "password": process.env.SEQUELIZE_PASSWORD,//.env 파일에 비밀번호 설정
     "database": "Notice",//db 이름
-    "host": "127.0.0.1",
+    "host": process.env.SEQUELIZE_HOST,
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
+    "username": process.env.SEQUELIZE_USERNAME,
     "password": process.env.SEQUELIZE_PASSWORD,
     "database": "Notice",
-    "host": "127.0.0.1",
+    "host": process.env.SEQUELIZE_HOST,
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
+    "username": process.env.SEQUELIZE_USERNAME,
     "password": process.env.SEQUELIZE_PASSWORD,
     "database": "Notice",
-    "host": "127.0.0.1",
+    "host": process.env.SEQUELIZE_HOST,
     "dialect": "mysql"
   }
 }
