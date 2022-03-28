@@ -81,7 +81,7 @@ app.use('/popular',popularRouter);
 
 const dataFunction = require('./crawling/crawling');
 //특정 시간에 알림
-const storeAlarm1 = schedule.scheduleJob('20 53 15 * * *',()=>{
+const storeAlarm1 = schedule.scheduleJob('00 00 00 * * *',()=>{
     dataFunction();
 });
 
