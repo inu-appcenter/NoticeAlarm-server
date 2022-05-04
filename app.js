@@ -3,11 +3,11 @@ const cookieparser = require('cookie-parser');
 const morgan =require('morgan');
 const path = require('path');
 const session = require('express-session');
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
 const schedule = require('node-schedule');//특정 시간에 알림을 보내기 위한 스케줄 모듈
 const nunjucks = require('nunjucks')
 
-dotenv.config();
+// dotenv.config();
 
 
 //라우터 연결
